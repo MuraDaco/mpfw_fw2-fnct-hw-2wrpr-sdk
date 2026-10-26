@@ -1,4 +1,4 @@
-                      //  *******************************************************************************
+//  *******************************************************************************
 //  
 //  mpfw / fw2 - Multi Platform FirmWare FrameWork
 //  Copyright (C) (2023) Marco Dau
@@ -33,9 +33,14 @@
 // ****************************************************
 // section start **** CONSTRUCTOR *****
 
-    hwPinPort_t::hwPinPort_t(                 uint8_t  p_port, uint8_t p_pin, const gpio_config_struct_t& p_config) :
-        mcuPinPort_t    (         p_port, p_pin, p_config)
+    hwPinPort_t::hwPinPort_t(                 uint8_t  p_port, uint8_t p_pin, uint8_t p_dir) :
+        mcuPinPort_t    (         p_port, p_pin, p_dir)
     {}
+
+//    hwPinPort_t::hwPinPort_t(                 uint8_t  p_port, uint8_t p_pin, const gpio_config_struct_t& p_config) :
+//        mcuPinPort_t    (         p_port, p_pin, p_config)
+//    {}
+
 
     hwPinPort_t::hwPinPort_t(uint8_t p_mcuId, uint8_t  p_port, uint8_t p_pin, const gpio_config_struct_t& p_config) :
         mcuPinPort_t    (p_mcuId, p_port, p_pin, p_config)

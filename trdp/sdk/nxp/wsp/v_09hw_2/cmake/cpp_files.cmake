@@ -31,7 +31,7 @@ include_guard()
 
         ## hw
         	${${CURR_MOD_NAME}_sdk_SRC_DIR}/hw/hwPinPort/v_${${CURR_MOD_NAME}_hwPinPort_VER}/hwPinPort.cpp
-        	${${CURR_MOD_NAME}_sdk_SRC_DIR}/hw/hwPinPort2/v_${${CURR_MOD_NAME}_hwPinPort2_VER}/hwPinPort2.cpp
+        	## ${${CURR_MOD_NAME}_sdk_SRC_DIR}/hw/hwPinPort2/v_${${CURR_MOD_NAME}_hwPinPort2_VER}/hwPinPort2.cpp
 ##        	## -- ## ${${CURR_MOD_NAME}_sdk_SRC_DIR}/wrapper/hw/hwUsart/v_${${CURR_MOD_NAME}_hwUsart_VER}/hwUsart.cpp
         	${${CURR_MOD_NAME}_sdk_SRC_DIR}/hw/hwUsartRs485/v_${${CURR_MOD_NAME}_hwUsartRs485_VER}/hwUsartRs485.cpp
 ##

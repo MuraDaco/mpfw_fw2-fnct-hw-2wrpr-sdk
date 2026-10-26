@@ -37,10 +37,10 @@
 class hw2ManagerCmmn_t  {
                     
 public:
-    static bool init    (void)                                                      {return true;};
-    static bool init    ([[maybe_unused]] int argc, [[maybe_unused]] char *argv[])  {return true;};
-    static bool loop    (void)                                                      {return true;};
-    static bool end     (void)                                                      {return true;};
+    // static bool init    (void)                                                      {return true;};
+    // static bool init    ([[maybe_unused]] int argc, [[maybe_unused]] char *argv[])  {return true;};
+    // static bool loop    (void)                                                      {return true;};
+    // static bool end     (void)                                                      {return true;};
 
 };
 

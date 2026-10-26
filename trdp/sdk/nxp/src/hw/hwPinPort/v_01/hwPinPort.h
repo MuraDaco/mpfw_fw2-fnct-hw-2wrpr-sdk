@@ -47,7 +47,8 @@ class hwPinPort_t :      public     mcuPinPort_t        // (specific platform) -
 // section start **** CONSTRUCTOR *****
     public:
 
-    hwPinPort_t  (uint8_t  p_port,    uint8_t p_pin, const gpio_config_struct_t& p_config);
+    hwPinPort_t  (uint8_t  p_port,    uint8_t p_pin, uint8_t p_dir);
+    //hwPinPort_t  (uint8_t  p_port,    uint8_t p_pin, const gpio_config_struct_t& p_config);
 
     // section end   **** CONSTRUCTOR ***** 
     // ****************************************************
@@ -56,6 +57,8 @@ class hwPinPort_t :      public     mcuPinPort_t        // (specific platform) -
 // section start **** PROCESS MANAGEMENT *****
 
     public:
+        void hwInit_Step1                (void) override;
+        void hwInit_Step2                (void) override;
 
     // section end   **** PROCESS MANAGEMENT *****
     // ****************************************************

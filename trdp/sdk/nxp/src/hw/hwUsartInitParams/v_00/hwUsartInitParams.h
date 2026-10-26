@@ -33,14 +33,30 @@
 #define     HW_USART_INIT_PARAMS_H_
 
 #include "LPC54608.h"
-#include "hw0UsartRs485Params.h"
+#include "pin_mux.h"
 using namespace fw2::fnct::base::hw;
 
 struct  hwUsartInitParams_t {
 
-    USART_Type* pUsartRegs;
-    hw0UsartRs485Params_t* pConfigRs485;
+    uint32_t            flexcomm_id;
+    USART_Type*         register_ptr;
+    clock_attach_id_t   clock_attach;
+    IRQn_Type           irq_n;
+    uint32_t            nvic_priority;
+    // ----------
+    uint8_t             icon_func;
+    uint8_t             rx_pin;
+    uint8_t             rx_port;
+    uint8_t             tx_pin;
+    uint8_t             tx_port;
+    bool                rs485_enabled;
+    uint8_t             RE_pin;
+    uint8_t             RE_port;
+    uint8_t             DE_pin;
+    uint8_t             DE_port;
+
 };
+
 
 
 #endif  //  HW_USART_INIT_PARAMS_H_

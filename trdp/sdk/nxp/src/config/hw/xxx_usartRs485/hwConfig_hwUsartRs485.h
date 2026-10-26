@@ -28,6 +28,9 @@
  *      Author: Marco Dau
  */
 
+#ifndef HW_CONFIG__HW_USART_RS485_H_
+#define HW_CONFIG__HW_USART_RS485_H_
+
 
 #define DEMO_MARCO_USART_FLEXCOMM_ID            4                       // see Table 118 (UM10912 User Manual)          & SYSCON_Type struct (LPC54608.h)
 #define DEMO_MARCO_USART_REG_PTR                USART4                  // see Table 422 & 429 (UM10912 User Manual)    & USART_Type struct  (LPC54608.h)
@@ -49,3 +52,6 @@
 
 #define APP_BOARD_MARCO_TEST_LED3_PORT 2U
 #define APP_BOARD_MARCO_TEST_LED3_PIN  2U
+
+
+#endif  //  HW_CONFIG__HW_USART_RS485_H_

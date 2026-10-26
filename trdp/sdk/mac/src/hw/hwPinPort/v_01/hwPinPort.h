@@ -49,7 +49,8 @@ class hwPinPort_t :      public     mcuPinPort_t        // (specific platform) -
     public:
 
     // for all platforms
-        hwPinPort_t  (                   uint8_t  p_port,    uint8_t p_pin, const gpio_config_struct_t& p_config);
+        // hwPinPort_t  (                   uint8_t  p_port,    uint8_t p_pin, const gpio_config_struct_t& p_config);
+        hwPinPort_t  (                   uint8_t  p_port,    uint8_t p_pin, uint8_t p_dir);
     // for the specific platform
         hwPinPort_t  (uint8_t p_mcuId,   uint8_t  p_port,    uint8_t p_pin, const gpio_config_struct_t& p_config);
 

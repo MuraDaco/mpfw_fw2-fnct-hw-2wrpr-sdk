@@ -45,6 +45,8 @@ class hw2ProxCmmn_t
 
     public:
         virtual void hwInit (void) {};
+        virtual void hwInit_Step1 (void) {};
+        virtual void hwInit_Step2 (void) {};
         virtual void hwInit ([[maybe_unused]]void* p_initData) {};
 
         virtual void hwLoop (void) {};

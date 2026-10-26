@@ -54,14 +54,18 @@ class hw2UsartCmmn_t:   public comBufferStatus_t
         uint8_t*    rxBuff_getPtrCleaned        (void);
         uint8_t     rxBuff_getLenghtCleaned     (void);
         uint8_t     rx_packetCheck              (void);
-        
-    protected:
+
+        static void interruptHandler_00  (hw2UsartCmmn_t* p_this);
         static void interruptHandler_0  (void* p_this);
+
+    protected:
         void interruptHandler           (void);
+        hw0UsartIntfc_t* g_pChannel;
+        uint8_t g_data_rx;
+
 
     private:
         uint8_t g_rxBuff[HW_2_USART_CMMN_RX_BUFFER_SIZE];
-        hw0UsartIntfc_t* g_pChannel;
 };
 
 #endif 	// HW_2_USART_CMMN_H

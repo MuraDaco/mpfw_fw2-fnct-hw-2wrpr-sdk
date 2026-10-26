@@ -36,16 +36,16 @@
 #include "hw2ProxCmmn.h"
 #include "hw2UsartCmmn.h"
 
-#include "hwConfig_hwUsartRs485.h"
 #include "hwUsartInitParams.h"
 
  
 // (specific platform) - processes (init, loop, end) interface (about virtual platforms)
 
 
-class hwUsartRs485_t :   public mcuUsartRs485_t     // (specific platform) - sdk module
-                        ,public hw2ProxCmmn_t       // (all platforms)     - processes (init, loop, end) interface 
-                        ,public hw2UsartCmmn_t      // (all platform)
+class hwUsartRs485_t :   public mcuUsartRs485_t         // (specific platform) - sdk module
+                        ,public hw0UsartRs485Params_t   // (specific platform) - sdk module
+                        ,public hw2ProxCmmn_t           // (all platforms)     - processes (init, loop, end) interface 
+                        ,public hw2UsartCmmn_t          // (all platform)
 
                         
 {
@@ -53,7 +53,15 @@ class hwUsartRs485_t :   public mcuUsartRs485_t     // (specific platform) - sdk
     public:
         hwUsartRs485_t  (hwUsartInitParams_t* p_pConfig, comProtocolInterface_t* p_pProto);
 
-        void hwInit (void) override;
+        void hwInit_Step1 (void) override;
+        void hwInit_Step2 (void) override;
+
+        void    setTxEnablePin      (void) override;
+        void    clrTxEnablePin      (void) override;
+        void    setRxEnablePin      (void) override;
+        void    clrRxEnablePin      (void) override;
+
+        static hw2UsartCmmn_t* g_usart4_this;
 
     private:
         void InitPins_IOCON   (void);
@@ -61,6 +69,8 @@ class hwUsartRs485_t :   public mcuUsartRs485_t     // (specific platform) - sdk
 
         
         usart_handle_v2_t g_handle;
+        hwUsartInitParams_t* g_pConfig;
+        bool g_rs485_enabled;
 
 };
 

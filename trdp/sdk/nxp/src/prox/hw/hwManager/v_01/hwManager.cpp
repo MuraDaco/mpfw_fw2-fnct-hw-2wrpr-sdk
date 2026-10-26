@@ -38,7 +38,13 @@ bool hwManager_t::init (void) {
     hw2ProxCmmn_t** l_ptrUnitArray = hwManagerTbl_t::UnitPtrArray;
     uint8_t l_id = 0;
     while(l_ptrUnitArray[l_id])    {
-        l_ptrUnitArray[l_id]->hwInit();
+        l_ptrUnitArray[l_id]->hwInit_Step1();
+        l_id++;
+    }
+
+    l_id = 0;
+    while(l_ptrUnitArray[l_id])    {
+        l_ptrUnitArray[l_id]->hwInit_Step2();
         l_id++;
     }
 

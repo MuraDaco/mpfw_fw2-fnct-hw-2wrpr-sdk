@@ -36,7 +36,9 @@
     hw2UsartCmmn_t::hw2UsartCmmn_t  (hw0UsartIntfc_t* p_pChannel, comProtocolInterface_t* p_pProto):  
          comBufferStatus_t       (p_pChannel, p_pProto)
         ,g_pChannel              {p_pChannel}
-    {}
+    {
+        g_pChannel              = p_pChannel;
+    }
 
 
     uint8_t*    hw2UsartCmmn_t::rxBuff_getPtr       (void)       {
@@ -57,13 +59,26 @@
 
 
 
+    void        hw2UsartCmmn_t::interruptHandler_00      (hw2UsartCmmn_t* p_this)   {
+        p_this->interruptHandler();
+        // p_this->g_pChannel->rx_eventEnd();
+        // p_this->g_pChannel->tx_eventEnd();
+    }
+
     void        hw2UsartCmmn_t::interruptHandler_0      (void* p_this)   {
 
-        static_cast<hw2UsartCmmn_t*>(p_this)->interruptHandler();
+        // if(nullptr == static_cast<hw2UsartCmmn_t*>(p_this)->g_pChannel)
+        //     static_cast<hw2UsartCmmn_t*>(p_this)->g_pChannel = static_cast<hw0UsartIntfc_t*>(p_this);
+
+        // static_cast<hw2UsartCmmn_t*>(p_this)->interruptHandler();
+
+        static_cast<hw2UsartCmmn_t*>(p_this)->g_pChannel->rx_eventEnd();
+        static_cast<hw2UsartCmmn_t*>(p_this)->g_pChannel->tx_eventEnd();
+
     }
     
     void        hw2UsartCmmn_t::interruptHandler        (void)	{
-
+        // return;
     	/*  =================================================
             "virtual" case description
             --------------------------
@@ -92,7 +107,8 @@
 
                 tx_interrupt_buffer_management();
 
-    		} else {
+    		} 
+            if(g_pChannel->rx_chkInterruptRaised()) {
                 // "virtual" case
     			//      . the current process is not the process that add data to shared memory buffer (that simulates the packet buffer)
                 //      . it is equivalent to the "real" case tx interrupt 
@@ -100,8 +116,12 @@
                 //      . the rx interrupt is raised; it means that a packet is being received
 
                 rx_interrupt_buffer_management();
-
+                // g_data_rx = g_pChannel->rx_eventReceiveData();
+                // g_pChannel->rx_eventEnd();
     		}
+
+            // g_data_rx = g_pChannel->rx_eventReceiveData();
+            // g_pChannel->rx_eventEnd();
     	} else {
             // only "virtual" case
     		// the channel is free:

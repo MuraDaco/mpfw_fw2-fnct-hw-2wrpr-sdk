@@ -33,10 +33,28 @@
 // ****************************************************
 // section start **** CONSTRUCTOR *****
 
-    hwPinPort_t::hwPinPort_t(uint8_t  p_port, uint8_t p_pin, const gpio_config_struct_t& p_config) :
-        mcuPinPort_t    (p_port, p_pin, p_config)
+    hwPinPort_t::hwPinPort_t(uint8_t  p_port, uint8_t p_pin, uint8_t p_dir) :
+        mcuPinPort_t    (p_port, p_pin, p_dir)
     {}
 
     // section end   **** CONSTRUCTOR ***** 
+    // ****************************************************
+    // --------------------------
+// ****************************************************
+// section start **** PROCESS MANAGEMENT *****
+
+        void hwPinPort_t::hwInit_Step1                (void)      {
+ 
+            pinInit_Step1();
+ 
+        }
+
+        void hwPinPort_t::hwInit_Step2                (void)      {
+ 
+            pinInit_Step2();
+ 
+        }
+
+    // section end   **** PROCESS MANAGEMENT *****
     // ****************************************************
     // --------------------------

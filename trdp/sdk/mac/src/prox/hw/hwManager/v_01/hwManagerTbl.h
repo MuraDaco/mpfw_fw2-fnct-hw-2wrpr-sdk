@@ -43,4 +43,4 @@ public:
 };
 
 
-#endif 	// PPH_MANAGER_TBL_H
+#endif 	// HW_MANAGER_TBL_H
